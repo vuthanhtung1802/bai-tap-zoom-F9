@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  --columns: 2;
+  /* số cột muốn hiển thị */
+  --spacing: 20px;
+  /* khoảng cách giữa các cột */
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+  height: 500px;
+  margin-left: calc(-1 * var(--spacing));
+  row-gap: var(--spacing);
+  border: 1px solid green;
+}
+
+.item {
+  border: 1px solid orchid;
+  text-align: center;
+  width: calc(100% / var(--columns) - var(--spacing));
+  margin-left: var(--spacing);
+}
+
+.box {
+  width: 200px;
+  border: 1px solid red;
+}
+
+.box1 {
+  border: 1px solid green;
+  width: 100px;
+  height: 100px;
+  padding-bottom: 20px;
+}
+
+.box2 {
+  border: 1px solid green;
+  width: 100px;
+  height: 100px;
+  padding-top: 50px;
+}

@@ -15,66 +15,43 @@
 // bai 1
 function investmentDecision(riskLevel, roi) {
   riskLevel = riskLevel.toLowerCase();
-  if ((riskLevel == "low" || riskLevel == "medium") && roi > 10) {
-    return true
-  } else if (riskLevel == "high" && roi > 20) {
-    return true
-  } else {
-    return false
-  }
+  if ((riskLevel == "low" || riskLevel == "medium") && roi > 10) return true
+  else if (riskLevel == "high" && roi > 20) return true
+  else return false
 }
-
 // investmentDecision("low", 20); // ==> true
 
 // bai 2
-
 function determineTravelPlan(weather, budget, preferences) {
   weather = weather.toLowerCase();
   preferences = preferences.toLowerCase();
-  if (weather === "xấu") {
+  if (weather === "xấu")
     return "Hoãn kế hoạch";
-  }
 
   if (budget >= 5000) {
     if (preferences) {
       return "Du lịch núi";
-    } else {
-      return "Du lịch biển";
-    }
-  } else {
-    return "Khám phá địa phương";
-  }
+    } else return "Du lịch biển";
+  } else return "Khám phá địa phương";
 }
-
 // determineTravelPlan("tot", 6000, true);
 
 // bai 3
 function determineStudentCategory(score, attendanceRate) {
-  if (attendanceRate < 0.5) {
-    return "Cần cải thiện";
-  }
+  if (attendanceRate < 0.5) return "Cần cải thiện";
 
-  if (score >= 90 && attendanceRate >= 0.5) {
-    return "Xuất sắc";
-  }
+  if (score >= 90 && attendanceRate >= 0.5) return "Xuất sắc";
 
-  if (score >= 75 && attendanceRate >= 0.7) {
-    return "Giỏi";
-  }
+  if (score >= 75 && attendanceRate >= 0.7) return "Giỏi";
 
-  if (score >= 60 && attendanceRate >= 0.6) {
-    return "Khá";
-  }
+  if (score >= 60 && attendanceRate >= 0.6) return "Khá";
 
-  if (score < 60 || attendanceRate < 0.6) {
-    return "Trung bình";
-  }
+  if (score < 60 || attendanceRate < 0.6) return "Trung bình";
 
   return "Không xác định";
 }
 
 // bai 4
-
 function hasAccessToWorkroom(isManager, hasAccessCard, passedSafetyTest) {
   return isManager || (hasAccessCard && passedSafetyTest);
 }

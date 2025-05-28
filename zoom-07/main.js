@@ -13,29 +13,47 @@
 */
 
 // bai 1
+// cach 1
 function investmentDecision(riskLevel, roi) {
-  riskLevel = riskLevel.toLowerCase();
-  if ((riskLevel == "low" || riskLevel == "medium") && roi > 10) return true
-  else if (riskLevel == "high" && roi > 20) return true
+
+  if ((riskLevel == "low" || riskLevel == "medium") && roi > 0.1) return true
+
+  else if (riskLevel == "high" && roi > 0.20) return true
+
   else return false
 }
 // investmentDecision("low", 20); // ==> true
 
+// cach 2
+function investmentDecision(riskLevel, roi) {
+  if ((riskLevel == "low" || riskLevel == "medium") && roi > 0.1) return true
+
+  if (riskLevel == "high" && roi > 0.20) return true
+
+  return false
+}
 // bai 2
-function determineTravelPlan(weather, budget, preferences) {
-  weather = weather.toLowerCase();
-  preferences = preferences.toLowerCase();
-  if (weather === "xấu")
-    return "Hoãn kế hoạch";
+// cach 1
+function determineTravelPlan(badWeather, budget, preferences) {
+  if (badWeather) return "Hoãn kế hoạch";
+
+  if (budget >= 5000) return preferences ? "Du lich nui" : "Du lich bien";
+
+  return "Khám phá địa phương";
+}
+// determineTravelPlan(false, 6000, true);
+
+// cach 2
+function determineTravelPlan(badWeather, budget, preferences) {
+  if (badWeather) return "Hoãn kế hoạch";
 
   if (budget >= 5000) {
-    if (preferences) {
-      return "Du lịch núi";
-    } else return "Du lịch biển";
-  } else return "Khám phá địa phương";
-}
-// determineTravelPlan("tot", 6000, true);
+    if (preferences) return `Du lich nui`
+    return `Du lich bien`
+  }
 
+  return "Khám phá địa phương";
+}
 // bai 3
 function determineStudentCategory(score, attendanceRate) {
   if (attendanceRate < 0.5) return "Cần cải thiện";
@@ -51,8 +69,34 @@ function determineStudentCategory(score, attendanceRate) {
   return "Không xác định";
 }
 
+// cach 2
+function determineStudentCategory(score, attendanceRate) {
+  switch (true) {
+    case (attendanceRate < 0.5):
+      return "Cần cải thiện";
+    case (score >= 90 && attendanceRate >= 0.5):
+      return "Xuất sắc";
+    case (score >= 75 && attendanceRate >= 0.7):
+      return "Giỏi";
+    case (score >= 60 && attendanceRate >= 0.6):
+      return "Khá";
+    case (score < 60 || attendanceRate < 0.6):
+      return "Trung bình";
+    default:
+      return "Không xác định";
+  }
+}
+
 // bai 4
+// cach 1
 function hasAccessToWorkroom(isManager, hasAccessCard, passedSafetyTest) {
   return isManager || (hasAccessCard && passedSafetyTest);
+}
+
+// cach 2
+function hasAccessToWorkroom(isManager, hasAccessCard, passedSafetyTest) {
+  if (isManager) return true;
+  if (hasAccessCard && passedSafetyTest) return true;
+  return false;
 }
 // hasAccessToWorkroom(true, true, true) // -> true

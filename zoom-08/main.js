@@ -6,7 +6,7 @@ function isString(value) {
 // console.log(isString(123)); // false
 
 function isNumber(value) {
-  return typeof value === 'number'
+  return typeof value === 'number' && !isNaN(value)
 }
 
 // console.log(isNumber(123)); // true
@@ -53,7 +53,7 @@ function isSymbol(value) {
 // console.log(isSymbol(Symbol('address'))) // true
 
 function isObject(value) {
-  return typeof value === 'object' && value != null && !Array.isArray(value)
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
 // console.log(isObject(123)); // false
@@ -81,3 +81,4 @@ function isFunction(value) {
 // console.log(isFunction({})); // false
 // console.log(isFunction(function() {})) // true
 
+export { isString, isArray, isNumber, isFunction, isUndefined }

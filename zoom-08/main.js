@@ -63,7 +63,7 @@ function isObject(value) {
 // console.log(isObject(undefined)); // true
 
 function isArray(value) {
-  return Array.isArray(value) && !Object.isObject(value)
+  return Array.isArray(value)
 }
 
 // console.log(isObject(123)); // false

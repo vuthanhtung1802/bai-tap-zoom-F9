@@ -1,4 +1,4 @@
-import { isArray, isNumber, isUndefined, isString } from "./main.js";
+import { isArray, isNumber, isUndefined, isString, isBoolean } from "./main.js";
 
 // bai 1
 const welcomeUser = (name) => {
@@ -104,3 +104,55 @@ var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9] // 9 / 2 = 4
 var arr2 = ["honda", "mazda", "KIA", "MG", "Mercedess"] // 9 / 2 = 4
 // console.log(">>>>: ", getMiddleElement(arr2));
 // console.log(getMiddleElement([{ name: "tung" }]));
+
+
+function convertDataType(value, type) {
+  switch (type) {
+    case "Number":
+      return Number(value)
+    case "String":
+      return String(value)
+    case "Boolean":
+      return Boolean(value)
+    default:
+      return "Invalid type"
+  }
+}
+
+// yêu cầu: chuyển value sang type
+// nếu type đầu vào là Number thì ép value đầu ra là Number
+
+// console.log(convertDataType(123, "Number"));
+// console.log(convertDataType(1, "Boolean"));
+// console.log(convertDataType("123", "String"));
+// console.log(convertDataType(123, "object"));
+
+function calculate(a, b, operator) {
+
+  let isNotNumberA = isNaN(a)
+  let isNotNumberB = isNaN(b)
+
+  if (isNotNumberA || isNotNumberB)
+    return "Invalid input number"
+
+  switch (operator) {
+    case "add":
+      let hasNumberA = convertDataType(a, "Number")
+      let hasNumberB = convertDataType(b, "Number")
+      let resultAddition = hasNumberA + hasNumberB
+      return resultAddition
+    case "subtract":
+      return a - b
+    case "multiply":
+      return a * b
+    case "divide":
+      if (b == 0) return "Cannot divide by zero"
+      return a / b
+    default:
+      return "Invalid operator"
+  }
+}
+
+console.log(calculate("5", "3", "add")); // 8
+console.log(calculate("5", "0", "divide")); // 2
+console.log(calculate("5", "five", "add")); // Invalid input number

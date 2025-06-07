@@ -81,4 +81,4 @@ function isFunction(value) {
 // console.log(isFunction({})); // false
 // console.log(isFunction(function() {})) // true
 
-export { isString, isArray, isNumber, isFunction, isUndefined }
+export { isString, isArray, isNumber, isFunction, isUndefined, isBoolean }

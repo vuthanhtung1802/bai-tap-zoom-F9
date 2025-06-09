@@ -12,12 +12,12 @@ const welcomeUser = (name) => {
 
 // bai 2: check tuổi
 function calculateAge(birthYear) {
-
   let d = new Date();
   let currentYear = d.getFullYear();
   let result = currentYear - birthYear;
   let isNotAge = !isNumber(result)
-  if (isNotAge) return -1;
+  if (birthYear > currentYear && isNotAge) return -1
+
   return result;
 }
 
@@ -108,23 +108,37 @@ var arr2 = ["honda", "mazda", "KIA", "MG", "Mercedess"] // 9 / 2 = 4
 
 function convertDataType(value, type) {
   switch (type) {
-    case "Number":
+    case "number":
       return Number(value)
-    case "String":
+    case "string":
       return String(value)
-    case "Boolean":
+    case "boolean":
       return Boolean(value)
     default:
       return "Invalid type"
   }
 }
 
+// cach 2
+// function convertDataType(value, type) {
+//   switch (type) {
+//     case "number":
+//       return Number(value)
+//     case "string":
+//       return String(value)
+//     case "boolean":
+//       return !!value
+//     default:
+//       return "Invalid type"
+//   }
+// }
+
 // yêu cầu: chuyển value sang type
 // nếu type đầu vào là Number thì ép value đầu ra là Number
 
-// console.log(convertDataType(123, "Number"));
-// console.log(convertDataType(1, "Boolean"));
-// console.log(convertDataType("123", "String"));
+// console.log(convertDataType(123, "number"));
+// console.log(convertDataType(1, "boolean"));
+// console.log(convertDataType("123", "string"));
 // console.log(convertDataType(123, "object"));
 
 function calculate(a, b, operator) {

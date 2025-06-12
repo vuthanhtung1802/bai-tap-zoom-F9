@@ -2,13 +2,22 @@ import { isArray, isNumber, isUndefined, isString, isBoolean } from "./main.js";
 
 // bai 1
 const welcomeUser = (name) => {
-  let isNotNameString = !isString(name)
+  let isNotNameString = !isString(name);
 
-  if (isNotNameString) return "Tên không hợp lệ"
-  return `Chào mừng ${name}`
+  if (isNotNameString) return "Tên không hợp lệ";
+  return `Chào mừng ${name}`;
 }
 
 // console.log(welcomeUser("tung"));
+
+const welcomeUser2 = (name) => {
+  let isNameString = _.isString(name);
+
+  if (isNameString) return `Chào mừng ${name}`;
+  return "Tên không hợp lệ";
+}
+
+// console.log(welcomeUser2("tung"));
 
 // bai 2: check tuổi
 function calculateAge(birthYear) {
@@ -20,8 +29,21 @@ function calculateAge(birthYear) {
 
   return result;
 }
+function calculateAge2(birthYear) {
+  let d = new Date();
+  let currentYear = d.getFullYear();
+  let result = currentYear - birthYear;
+  let isNotAge = !_.isDate(result)
+  if (birthYear > currentYear && isNotAge) return -1
 
-// console.log(calculateAge(2000));
+  return result;
+}
+
+// check 1 đối tượng có phải Date hay không (dùng thư viện lodash)
+// console.log(_.isDate(new Date())); // true
+// console.log(_.isDate(Date.now())); // false
+// console.log(_.isDate("2024-01-04")); // false
+// console.log(_.isDate({})); // false
 
 // bai 3:  
 function getElementAtIndex(array, index) {
@@ -32,6 +54,16 @@ function getElementAtIndex(array, index) {
     return null
   return array[index]
 }
+
+// dùng lodash
+function getElementAtIndex2(array, index) {
+  let isArray = _.isArray(array)
+  let isNumber = _.isNumber(index)
+
+  if (isArray || isNumber || index >= 0) return array[index]
+  return null
+}
+console.log(getElementAtIndex2([1, 2, 3], 2));  // 3
 
 // bai 4: check empty
 function checkEmpty(value) {
@@ -106,20 +138,6 @@ var arr2 = ["honda", "mazda", "KIA", "MG", "Mercedess"] // 9 / 2 = 4
 // console.log(getMiddleElement([{ name: "tung" }]));
 
 
-function convertDataType(value, type) {
-  switch (type) {
-    case "number":
-      return Number(value)
-    case "string":
-      return String(value)
-    case "boolean":
-      return Boolean(value)
-    default:
-      return "Invalid type"
-  }
-}
-
-// cach 2
 // function convertDataType(value, type) {
 //   switch (type) {
 //     case "number":
@@ -127,17 +145,31 @@ function convertDataType(value, type) {
 //     case "string":
 //       return String(value)
 //     case "boolean":
-//       return !!value
+//       return Boolean(value)
 //     default:
 //       return "Invalid type"
 //   }
 // }
 
+// cach 2
+function convertDataType(value, type) {
+  switch (type) {
+    case "number":
+      return Number(value)
+    case "string":
+      return String(value)
+    case "boolean":
+      return !!value
+    default:
+      return "Invalid type"
+  }
+}
+
 // yêu cầu: chuyển value sang type
 // nếu type đầu vào là Number thì ép value đầu ra là Number
 
 // console.log(convertDataType(123, "number"));
-// console.log(convertDataType(1, "boolean"));
+// console.log(convertDataType("0", "boolean"));
 // console.log(convertDataType("123", "string"));
 // console.log(convertDataType(123, "object"));
 
@@ -167,6 +199,7 @@ function calculate(a, b, operator) {
   }
 }
 
-console.log(calculate("5", "3", "add")); // 8
-console.log(calculate("5", "0", "divide")); // 2
-console.log(calculate("5", "five", "add")); // Invalid input number
+// console.log(calculate("5", "3", "add")); // 8
+// console.log(calculate("5", "0", "divide")); // 2
+// console.log(calculate("5", "five", "add")); // Invalid input number
+
